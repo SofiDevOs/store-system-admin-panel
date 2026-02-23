@@ -1,26 +1,17 @@
 "use client";
-import { Home, TableProperties } from "lucide-react";
+
 import { useState } from "react";
-import Link from "next/link";
+
 import { usePathname } from "next/navigation";
 import Sidebar from "./components/Sidebar";
 import "./styles/dashboard.css";
-
-const navMenu = [
-  {
-    name: "Dashboard",
-    href: "/dashboard",
-    icon: <Home />,
-  },
-  {
-    name: "Empleados",
-    href: "/dashboard/employees",
-    icon: <TableProperties />,
-  },
-];
+import {navMenu} from "./data/navMenu";
+import MenuItem from "./components/MenuItem";
+import Footer from "./components/Footer";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const [isActive, setActive] = useState(false);
+
   const pathname = usePathname();
 
   const openPanel = () => setActive((prev) => !prev);
@@ -32,22 +23,25 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
           <nav
             className={`mt-5 flex flex-col gap-1 transition-discrete transition-all duration-500 ease-in-out ${isActive ? "items-start" : "items-center"}`}
           >
-            <ul className="flex flex-col gap-2 w-full"  >
-              {
-                navMenu.map((item, index) => (
-                <li className="flex items-center gap-2" key={index}>
-                  <Link
-                    href={item.href}
-                    className={`flex items-center gap-1 ${pathname === item.href ? "text-emerald-500" : "text-white/80"}`}
+            <ul className="flex flex-col gap-2 w-full">
+              {navMenu.map((item) => {
+                const panelIsActive = isActive ? "px-4 justify-start" : 'justify-center px-1';
+                const isActivePage = pathname === item.href && " bg-emerald-700/30";
+                return (
+                  <MenuItem
+                    className={`flex items-center gap-2  py-2  rounded-xl border   border-emerald-400/50 ${panelIsActive}  ${isActivePage}` }
+                    key={item.name}
+                    {...item}
+                    pathname={pathname}
+                    isActive={isActive}
                   >
                     {item.icon}
-                    <span className={`ml-2 transition-discrete transition-all linear duration-300 ${isActive ? "block w-full" : "hidden w-0"}`}>{item.name}</span>
-                  </Link>
-                </li>
-                ))
-              }
+                  </MenuItem>
+                );
+              })}
             </ul>
           </nav>
+          <Footer isActive={isActive}/>
         </Sidebar>
         <div className="flex flex-col w-full p-5  [grid-area:main] ">
           {children}
