@@ -1,0 +1,42 @@
+[
+  {
+    "id": "e1a3f0b2-9f1a-4d2a-8a6b-0a1c2d3e4f01",
+    "name": "Carlos Martínez",
+    "profilePicture": "https://api.example.com/images/carlos-martinez.jpg",
+    "date": "2026-02-10",
+    "reason": "Enfermedad",
+    "status": "APROVED"
+  },
+  {
+    "id": "b2c4d6e8-1f2a-4b3c-9d0e-1f2a3b4c5d02",
+    "name": "María Gómez",
+    "profilePicture": "https://api.example.com/images/maria-gomez.jpg",
+    "date": "2026-02-12",
+    "reason": "Cita médica",
+    "status": "PENDING"
+  },
+  {
+    "id": "c3d5e7f9-2a3b-4c5d-8e1f-2a3b4c5d6e03",
+    "name": "Luis Fernández",
+    "profilePicture": "https://api.example.com/images/luis-fernandez.jpg",
+    "date": "2026-01-20",
+    "reason": "Vacaciones",
+    "status": "APROVED"
+  },
+  {
+    "id": "d4e6f8a0-3b4c-5d6e-9f2a-3b4c5d6e7f04",
+    "name": "Ana Ruiz",
+    "profilePicture": "https://api.example.com/images/ana-ruiz.jpg",
+    "date": "2026-02-01",
+    "reason": "Me voy de peda",
+    "status": "REJECT"
+  },
+  {
+    "id": "e5f7a901-4c5d-6e7f-0a3b-4c5d6e7f8a05",
+    "name": "Jorge López",
+    "profilePicture": "https://api.example.com/images/jorge-lopez.jpg",
+    "date": "2026-02-18",
+    "reason": "Enfermedad",
+    "status": "PENDING"
+  }
+]

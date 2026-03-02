@@ -1,20 +1,14 @@
 import React from "react";
-import DashboardCard from "./components/sections/DashboardCard";
-
+import { BasicStats } from "./components/sections/BasicStats";
+import AbsenseTable from "./components/sections/AbsenseTable";
+import employee from "./dummyData/employee.json";
+import type { AbsenceEmployee } from "@/types/absenceEmployee.type";
 const page = () => {
   return (
-    <section className="flex w-full px-4 h-1/4 gap-5">
-      {/*  Empleados activos  */}
-      <DashboardCard>
-        <h2>patata</h2>
-      </DashboardCard>
-      <DashboardCard basis="30%">
-        <h2>Nomina</h2>
-      </DashboardCard>
-      <DashboardCard basis="50%">
-        <h2>Nomina</h2>
-      </DashboardCard>
-    </section>
+    <>
+      <BasicStats />
+      <AbsenseTable absenceData={employee as AbsenceEmployee[]} />
+    </>
   );
 };
 

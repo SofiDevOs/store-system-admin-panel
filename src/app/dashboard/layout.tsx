@@ -5,7 +5,7 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import Sidebar from "./components/Sidebar";
 import "./styles/dashboard.css";
-import {navMenu} from "./data/navMenu";
+import {navMenu} from "./dummyData/navMenu";
 import MenuItem from "./components/MenuItem";
 import Footer from "./components/Footer";
 
@@ -43,7 +43,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
           </nav>
           <Footer isActive={isActive}/>
         </Sidebar>
-        <div className="flex flex-col w-full p-5  [grid-area:main] ">
+        <div className="flex flex-col w-full p-5  [grid-area:main]">
           {children}
         </div>
       </section>
