@@ -5,9 +5,10 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import Sidebar from "./components/Sidebar";
 import "./styles/dashboard.css";
-import {navMenu} from "./dummyData/navMenu";
-import MenuItem from "./components/MenuItem";
 import Footer from "./components/Footer";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { ChevronRight } from "lucide-react";
+import { SidebarNav } from "./components/SidebarNav";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const [isActive, setActive] = useState(false);
@@ -17,37 +18,25 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const openPanel = () => setActive((prev) => !prev);
 
   return (
-    <main className="flex flex-col  mx-auto w-full min-h-screen">
+    <div className="flex flex-col  mx-auto w-full min-h-screen h-full">
       <section className="dashboard">
         <Sidebar isActive={isActive} openPanel={openPanel}>
-          <nav
-            className={`mt-5 flex flex-col gap-1 transition-discrete transition-all duration-500 ease-in-out ${isActive ? "items-start" : "items-center"}`}
-          >
-            <ul className="flex flex-col gap-2 w-full">
-              {navMenu.map((item) => {
-                const panelIsActive = isActive ? "px-4 justify-start" : 'justify-center px-1';
-                const isActivePage = pathname === item.href && " bg-emerald-700/30";
-                return (
-                  <MenuItem
-                    className={`flex items-center gap-2  py-2  rounded-xl border   border-emerald-400/50 ${panelIsActive}  ${isActivePage}` }
-                    key={item.name}
-                    {...item}
-                    pathname={pathname}
-                    isActive={isActive}
-                  >
-                    {item.icon}
-                  </MenuItem>
-                );
-              })}
-            </ul>
-          </nav>
-          <Footer isActive={isActive}/>
+          <SidebarNav isActive={isActive} pathname={pathname} />
+          <Footer isActive={isActive} />
         </Sidebar>
-        <div className="flex flex-col w-full p-5  [grid-area:main]">
-          {children}
+        <div className="flex flex-col w-full h-full [grid-area:main]">
+          <header className="flex justify-between sticky top-0 bg-background z-10 items-center px-2 py-2  mb-5">
+            <h1 className=" font-bold flex items-center gap-2">
+              <ChevronRight className="w-4 h-4" /> {pathname}
+            </h1>
+            <ThemeToggle />
+          </header>
+          <main className="flex flex-col gap-4 w-full h-full px-2 md:px-10">
+            {children}
+          </main>
         </div>
       </section>
-    </main>
+    </div>
   );
 };
 
