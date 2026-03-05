@@ -1,6 +1,7 @@
 import { AbsenceEmployee } from "@/types/absenceEmployee.type";
 import Image from "next/image";
 import TagStatus from "../TagStatus";
+import Link from "next/link";
 
 interface Props {
   absenceData: AbsenceEmployee[];
@@ -11,7 +12,7 @@ interface Props {
 
 const AbsenseTable = ({ absenceData, tableMenu, columns, children }: Props) => {
   return (
-    <div className="mt-10 bg-slate-700 dark:bg-slate-900 border border-slate-500/30  rounded-xl p-4 w-full  ">
+    <div className="bg-slate-700 dark:bg-slate-900 border border-slate-500/30  rounded-xl p-4 w-full  ">
       <table className="table-auto md:table-fixed border-collapse w-full min-h-fit ">
         <thead className="border-b border-slate-500/30">
           <tr className="py-4">
@@ -49,6 +50,14 @@ const AbsenseTable = ({ absenceData, tableMenu, columns, children }: Props) => {
                 </td>
               )}
               {children}
+              <td>
+                <Link
+                  href={`/dashboard/absense/${row.id}`}
+                  className="bg-slate-800 dark:bg-slate-600 hover:bg-slate-600 dark:hover:bg-slate-500 text-white px-2 py-1 rounded"
+                >
+                  Detalles
+                </Link>
+              </td>
             </tr>
           ))}
         </tbody>

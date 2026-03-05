@@ -1,21 +1,26 @@
 import React from "react";
 import DashboardCard from "./DashboardCard";
+import "../../styles/dashboard-grid.css";
+import SalesPerDay from "../SalesPerDay";
+
 
 export const BasicStats = () => {
-  return (
-    <>
-      <section className="flex w-full px-4 h-1/4 gap-5">
-        {/*  Empleados activos  */}
-        <DashboardCard>
-          <h2>patata</h2>
-        </DashboardCard>
-        <DashboardCard basis="30%">
-          <h2>Nomina</h2>
-        </DashboardCard>
-        <DashboardCard basis="50%">
-          <h2>Nomina</h2>
-        </DashboardCard>
-      </section>
-    </>
-  );
+	return (
+		<>
+			<section className="stats-grid w-full">
+				<DashboardCard gridEl="el-1" title="Ventas del dia">
+					<SalesPerDay />
+				</DashboardCard>
+				<DashboardCard gridEl="el-2" title="Faltas injustificadas">
+					<p>patata</p>
+				</DashboardCard>
+				<DashboardCard gridEl="el-3" title="Empleados Activos">
+					<h2>Empleados activos</h2>
+				</DashboardCard>
+				<DashboardCard gridEl="el-4" title="Descansos">
+					<h2>Descansos</h2>
+				</DashboardCard>
+			</section>
+		</>
+	);
 };
