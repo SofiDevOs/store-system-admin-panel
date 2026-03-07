@@ -2,24 +2,24 @@ import React from "react";
 import DashboardCard from "./DashboardCard";
 import "../../styles/dashboard-grid.css";
 import SalesPerDay from "../SalesPerDay";
+import EmployeeStats from "../EmployeeStats";
+import {Schedule} from  './Schedule';
 
 
 export const BasicStats = () => {
 	return (
 		<>
 			<section className="stats-grid w-full">
-				<DashboardCard gridEl="el-1" title="Ventas del dia">
+				<DashboardCard className="[grid-area:el-1]" title="Ventas del dia">
 					<SalesPerDay />
 				</DashboardCard>
-				<DashboardCard gridEl="el-2" title="Faltas injustificadas">
-					<p>patata</p>
+				<DashboardCard className="[grid-area:el-2]" title="Empleados Activos">
+					<EmployeeStats/>
 				</DashboardCard>
-				<DashboardCard gridEl="el-3" title="Empleados Activos">
-					<h2>Empleados activos</h2>
+				<DashboardCard className="[grid-area:el-3] items-center !p-0" >
+					<Schedule className="bg-slate-900"/>
 				</DashboardCard>
-				<DashboardCard gridEl="el-4" title="Descansos">
-					<h2>Descansos</h2>
-				</DashboardCard>
+
 			</section>
 		</>
 	);

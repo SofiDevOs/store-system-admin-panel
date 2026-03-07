@@ -3,10 +3,10 @@
   gap: 1rem;
   width: 100%;
   margin: 0 auto;
-  grid-template-columns: 1fr 2fr 2fr 1fr;
+  grid-template-columns: 2fr 1fr 2fr;
+  grid-template-rows: 20rem;
   grid-template-areas:
-    "el-1 el-2  el-3 el-3 el-4 "
-    ;
+    "el-1 el-2 el-3 el-3";
 @media (width <= 768px){
     display:flex;
     flex-direction: column;
