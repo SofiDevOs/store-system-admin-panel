@@ -1,6 +1,7 @@
 import React from "react";
+import type { Status } from "@/types/status.type";
 interface Props {
-  status: "PENDING" | "APROVED" | "REJECT";
+  status: Status
 }
 
 const TagStatus = ({ status }: Props) => {

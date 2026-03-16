@@ -6,6 +6,7 @@ import EmployeeStats from "../EmployeeStats";
 import {Schedule} from  './Schedule';
 
 
+
 export const BasicStats = () => {
 	return (
 		<>
@@ -16,10 +17,9 @@ export const BasicStats = () => {
 				<DashboardCard className="[grid-area:el-2]" title="Empleados Activos">
 					<EmployeeStats/>
 				</DashboardCard>
-				<DashboardCard className="[grid-area:el-3] items-center !p-0" >
+				<DashboardCard className='[grid-area:el-3] items-center p-0' >
 					<Schedule className="bg-slate-900"/>
 				</DashboardCard>
-
 			</section>
 		</>
 	);
