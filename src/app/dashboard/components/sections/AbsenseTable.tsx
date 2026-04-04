@@ -6,7 +6,7 @@ interface Props {
 	children?: React.ReactNode;
 }
 
-const AbsenseTable = ({  tableMenu,  children }: Props) => {
+const AbsenseTable = ({  tableMenu,   children }: Props) => {
 	return (
 		<div className="bg-slate-700 dark:bg-slate-900 border border-slate-500/30  rounded-xl p-4 w-full  ">
 			<table className="table-auto md:table-fixed border-collapse w-full min-h-fit ">

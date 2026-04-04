@@ -25,7 +25,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
           <Footer isActive={isActive} />
         </Sidebar>
         <div className="flex flex-col w-full h-full [grid-area:main]">
-          <header className="flex justify-between sticky top-0 bg-background z-10 items-center px-2 py-2  mb-5">
+          <header className="flex justify-between sticky top-0 bg-background z-10 items-center px-2 py-2  mb-5 z-100">
             <h1 className=" font-bold flex items-center gap-2">
               <ChevronRight className="w-4 h-4" /> {pathname}
             </h1>

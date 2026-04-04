@@ -18,7 +18,7 @@ export const BasicStats = () => {
 					<EmployeeStats/>
 				</DashboardCard>
 				<DashboardCard className='[grid-area:el-3] items-center p-0' >
-					<Schedule className="bg-slate-900"/>
+					<Schedule className="bg-transparent border-none text-primary"/>
 				</DashboardCard>
 			</section>
 		</>

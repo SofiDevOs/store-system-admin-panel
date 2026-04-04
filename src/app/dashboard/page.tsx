@@ -25,7 +25,7 @@ const page = () => {
       <BasicStats />
       <AbsenseTable
 				absenceData={absenceData as AbsenceEmployee[]}
-				columns={columns}
+
 				tableMenu={tableMenu}
 			>
 				{absenceData.map((row) => (
@@ -53,6 +53,11 @@ const page = () => {
 								<TagStatus status={row.status as Status} />
 							</td>
 						)}
+						<td>
+							<button className="px-3 py-1 rounded bg-slate-900 dark:bg-slate-600 text-sm">
+								Ver detalles
+							</button>
+						</td>
 					</tr>
 				))}
 			</AbsenseTable>
