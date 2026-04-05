@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { apiFetch } from "@/lib/api";
 export const useAuth = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState<string | null>(null);
 	const router = useRouter();
-	const API_URL = process.env.NEXT_PUBLIC_API_URL;
-
 	const login = async (formData: FormData) => {
 		setIsLoading(true);
 		setError(null);
@@ -25,37 +24,7 @@ export const useAuth = () => {
 		}
 
 		try {
-			const csrfResponse = await fetch(`${API_URL}/auth/csrf-token`, {
-				method: "GET",
-				credentials: "include",
-				headers: {
-					Accept: "application/json",
-				},
-				cache: "no-store",
-			});
-
-			if (!csrfResponse.ok) {
-				throw new Error("Unable to establish a secure connection with the server");
-			}
-
-			const { csrfToken } = await csrfResponse.json();
-
-			const loginResponse = await fetch(`${API_URL}/auth/login`, {
-				method: "POST",
-				credentials: "include",
-				headers: {
-					"Content-Type": "application/json",
-					"x-csrf-token": csrfToken,
-				},
-				body: JSON.stringify({ email, password }),
-			});
-
-			if (!loginResponse.ok) {
-				const errorData = await loginResponse.json().catch(() => null);
-				throw new Error(
-					errorData?.errors?.[0]?.msg || errorData?.message || "Login failed",
-				);
-			}
+			await apiFetch("/auth/login", { method: "POST", body: { email, password } });
 
 			router.push("/");
 			router.refresh();
