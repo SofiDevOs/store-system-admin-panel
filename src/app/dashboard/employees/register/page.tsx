@@ -1,4 +1,4 @@
-import React from 'react'
+"use client";
 import EmployeeForm from '../components/form/EmployeeForm'
 
 const page = () => {

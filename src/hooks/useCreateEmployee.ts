@@ -9,7 +9,7 @@ export const useCreateEmployee = () => {
 	const register = async (formData: FormData) => {
 		setIsLoading(true);
 		setError(null);
-		const fields = ["name", "lastname", "nss", "rfc"] as const;
+		const fields = ["name", "lastname", "nss", "rfc", "address", "salary", "email", "birthdate", "profileImage"] as const;
 		const data = Object.fromEntries(
 			fields.map((field) => [
 				field,
@@ -23,7 +23,7 @@ export const useCreateEmployee = () => {
 		}
 		try {
 			await apiFetch("/auth/register", { method: "POST", body: data });
-			router.push("/dashboard/employees");
+
 			router.refresh();
 			// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		} catch (err: unknown) {

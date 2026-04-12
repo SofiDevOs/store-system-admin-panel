@@ -61,7 +61,7 @@ interface ApiOptions { method?: HttpMethod; body?: unknown; headers?: Record<str
  * form.append("avatar", file);
  * await apiFetch("/employees/avatar", { method: "POST", body: form });
  */
-export const apiFetch = async <T>(endpoint: string, { method = "GET", body, headers }: ApiOptions = {}): Promise<T> => {
+export const apiFetch = async <T>(endpoint: string, { method, body, headers }: ApiOptions = {}): Promise<T> => {
     const isForm = body instanceof FormData;
 
     const res = await fetch(`${API_URL}${endpoint}`, {
