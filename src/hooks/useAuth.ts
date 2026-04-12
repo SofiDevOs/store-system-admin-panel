@@ -24,7 +24,8 @@ export const useAuth = () => {
 		}
 
 		try {
-			await apiFetch("/auth/login", { method: "POST", body: { email, password } });
+			const data = await apiFetch("/auth/login", { method: "POST", body: { email, password } });
+			console.log("Login response payload:", data);
 
 			router.push("/");
 			router.refresh();

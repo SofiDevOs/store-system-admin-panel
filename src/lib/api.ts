@@ -15,7 +15,7 @@ let csrfToken: string | null = null;
  */
 export const getCsrfToken = async (): Promise<string> => {
     if (csrfToken) return csrfToken;
-    const res = await fetch(`${API_URL}/auth/csrf-token`, { credentials: "include", cache: "no-store" });
+    const res = await fetch(`${API_URL}/security/csrf-token`, { credentials: "include", cache: "no-store" });
     if (!res.ok) throw new Error("Secure connection failed");
     csrfToken = (await res.json()).csrfToken;
     return csrfToken as string;

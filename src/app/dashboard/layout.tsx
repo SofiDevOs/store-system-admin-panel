@@ -6,9 +6,10 @@ import { usePathname } from "next/navigation";
 import Sidebar from "./components/Sidebar";
 import "./styles/dashboard.css";
 import Footer from "./components/Footer";
-import { ThemeToggle } from "@/components/ThemeToggle";
-import { ChevronRight } from "lucide-react";
+import { ThemeToggle } from "@/shared/components/ThemeToggle";
 import { SidebarNav } from "./components/SidebarNav";
+import Breadcrumb from "@/shared/components/Breadcrumb";
+import UserMenu from "@/shared/components/UserMenu";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const [isActive, setActive] = useState(false);
@@ -25,11 +26,12 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
           <Footer isActive={isActive} />
         </Sidebar>
         <div className="flex flex-col w-full h-full [grid-area:main]">
-          <header className="flex justify-between sticky top-0 bg-background z-10 items-center px-2 py-2  mb-5 z-100">
-            <h1 className=" font-bold flex items-center gap-2">
-              <ChevronRight className="w-4 h-4" /> {pathname}
-            </h1>
+          <header className="flex justify-between sticky top-0 bg-background  items-center px-2 py-2  z-100">
+            <Breadcrumb />
+            <div className="flex gap-1 items-center">
+            <UserMenu/>
             <ThemeToggle />
+            </div>
           </header>
           <main className="flex flex-col gap-4 w-full h-full px-2 md:px-10">
             {children}

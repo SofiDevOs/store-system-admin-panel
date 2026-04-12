@@ -22,7 +22,7 @@ export const useCreateEmployee = () => {
 			return;
 		}
 		try {
-			await apiFetch("/auth/register", { method: "POST", body: data });
+			await apiFetch("/employee", { method: "POST", body: data });
 
 			router.refresh();
 			// eslint-disable-next-line @typescript-eslint/no-unused-vars

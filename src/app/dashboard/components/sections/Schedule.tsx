@@ -1,7 +1,7 @@
 "use client"
 import {useState} from 'react';
 
-import { Calendar } from "@/components/ui/calendar"
+import { Calendar } from "@/shared/components/ui/calendar"
 interface Props{
     className?: string;
 }

@@ -1,4 +1,4 @@
-import { ThemeToggle } from "@/components/ThemeToggle";
+import { ThemeToggle } from "@/shared/components/ThemeToggle";
 import { ThemeProvider } from "@/context/ThemeContext";
 
 import LoginForm from "./components/LoginForm";
