@@ -9,7 +9,7 @@
   /* max-height: 100dvh; */
   transition: grid-template-columns 0.3s;
   &:has(> .sidebar.active) {
-    --sidebar-width: 270px;
+    --sidebar-width: 230px;
     --sidebar-padding: 2rem;
   }
   @media (max-width: 768px) {

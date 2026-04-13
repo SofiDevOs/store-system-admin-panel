@@ -33,10 +33,18 @@ export const data = {
 const options = {
 	responsive: true,
 	maintainAspectRatio: false,
+	plugins: {
+		legend: {
+			position: "left" as const,
+			labels: {
+				color: "white",
+			},
+		},
+	},
 };
 const EmployeeStats = () => {
 	return (
-		<div className="h-full">
+		<div className="h-full  ">
 			<Pie options={options} data={data} />
 		</div>
 	);

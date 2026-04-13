@@ -26,14 +26,14 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
           <Footer isActive={isActive} />
         </Sidebar>
         <div className="flex flex-col w-full h-full [grid-area:main]">
-          <header className="flex justify-between sticky top-0 bg-background  items-center px-2 py-2  z-100">
+          <header className="flex justify-between sticky top-0 bg-background  items-center px-4 py-2 z-100 border-b border-foreground/20 mb-4">
             <Breadcrumb />
-            <div className="flex gap-1 items-center">
-            <UserMenu/>
+            <div className="flex gap-4 items-center">
             <ThemeToggle />
+            <UserMenu/>
             </div>
           </header>
-          <main className="flex flex-col gap-4 w-full h-full px-2 md:px-10">
+          <main className="flex flex-col gap-4 w-full h-full px-2 md:px-4">
             {children}
           </main>
         </div>

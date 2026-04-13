@@ -3,7 +3,7 @@ import React from 'react'
 
 const EmployeeHeader = () => {
   return (
-    <header className='flex w-full shadow shadow-foreground/10 p-4  items-center justify-end'>
+    <header className='flex w-full  p-4  items-center justify-end'>
         <Link
         className='px-2 py-1 text-white font-bold bg-slate-700 rounded-sm '
         href={'/dashboard/employees/register'}>

@@ -91,7 +91,7 @@ function EmployeeForm() {
 					/>
 				</div>
 				<Input
-					name="profilePicture"
+					name="profileImage"
 					label="Foto de perfil"
 					type="file"
 					accept="image/*"

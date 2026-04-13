@@ -14,7 +14,7 @@ export const BasicStats = () => {
 				<DashboardCard className="[grid-area:el-1]" title="Ventas del dia">
 					<SalesPerDay />
 				</DashboardCard>
-				<DashboardCard className="[grid-area:el-2]" title="Empleados Activos">
+				<DashboardCard className="[grid-area:el-2]" >
 					<EmployeeStats/>
 				</DashboardCard>
 				<DashboardCard className='[grid-area:el-3] items-center p-0' >
