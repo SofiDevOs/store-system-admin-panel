@@ -15,12 +15,12 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: PropsWithChildren) {
-  const [theme, setTheme] = useState(() => {
-    if (typeof window !== "undefined") {
-      return document.documentElement.classList.contains("dark") ? "dark" : "light";
-    }
-    return "light";
-  });
+  const [theme, setTheme] = useState("light");
+
+  useEffect(() => {
+    const current = document.documentElement.classList.contains("dark") ? "dark" : "light";
+    setTheme(current);
+  }, []);
 
   useEffect(() => {
     document.documentElement.classList.remove("light", "dark");

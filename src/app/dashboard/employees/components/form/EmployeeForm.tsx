@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 import Form from "next/form";
 import Input from "./Input";
 import StepIndicator, { STEPS } from "./StepIndicator";
@@ -8,9 +9,32 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const TOTAL_STEPS = STEPS.length;
 
+const ROLES = [
+	{ label: "Empleado", value: "EMPLOYEE" },
+	{ label: "Gerente", value: "MANAGER" },
+	{ label: "Administrador", value: "ADMIN" },
+] as const;
+
 function EmployeeForm() {
 	const { register, isLoading, error } = useCreateEmployee();
 	const [currentStep, setCurrentStep] = useState(1);
+	const [preview, setPreview] = useState<string | null>(null);
+
+	const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const file = e.target.files?.[0];
+		if (file) {
+			const url = URL.createObjectURL(file);
+			setPreview((prev) => {
+				if (prev) URL.revokeObjectURL(prev);
+				return url;
+			});
+		} else {
+			setPreview((prev) => {
+				if (prev) URL.revokeObjectURL(prev);
+				return null;
+			});
+		}
+	};
 
 	const goNext = () => setCurrentStep((s) => Math.min(s + 1, TOTAL_STEPS));
 	const goBack = () => setCurrentStep((s) => Math.max(s - 1, 1));
@@ -18,7 +42,7 @@ function EmployeeForm() {
 	return (
 		<Form
 			action={register}
-			className="flex flex-col self-center px-6 py-3 rounded-xl bg-slate-700 w-full  border-box *:text-white/80 gap-2"
+			className="flex flex-col self-center px-6 py-3 rounded-xl  w-full  border-box *:text-white/80 gap-2"
 		>
 			<StepIndicator currentStep={currentStep} steps={STEPS} />
 
@@ -26,9 +50,7 @@ function EmployeeForm() {
 			<div
 				className={currentStep === 1 ? "flex flex-col gap-3" : "hidden"}
 			>
-				<h3 className="text-lg font-semibold text-white/90">
-					Datos personales
-				</h3>
+
 				<div className="grid grid-cols-2 gap-4">
 					<Input
 						name="name"
@@ -90,13 +112,33 @@ function EmployeeForm() {
 						className="w-full px-3 py-2.5 rounded-lg bg-slate-800/60 border border-slate-600/50 text-white/90 outline-none transition-all duration-200 focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500/60 hover:border-slate-500"
 					/>
 				</div>
-				<Input
-					name="profileImage"
-					label="Foto de perfil"
-					type="file"
-					accept="image/*"
-					required={false}
-				/>
+				<div className="flex items-end gap-4">
+					<div className="flex flex-col gap-1.5">
+						<label
+							htmlFor="profileImage"
+							className="text-sm font-medium text-slate-300 tracking-wide"
+						>
+							Foto de perfil
+						</label>
+						<input
+							type="file"
+							id="profileImage"
+							name="profileImage"
+							accept="image/*"
+							onChange={handleImageChange}
+							className="w-fit px-3 py-1 rounded-lg bg-slate-800/60 border border-slate-600/50 text-white/90 outline-none transition-all duration-200 focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500/60 hover:border-slate-500 file:mr-3 file:px-3 file:py-1.5 file:rounded-md file:border-0 file:bg-slate-600 file:text-sm file:font-medium file:text-slate-300 file:cursor-pointer hover:file:bg-slate-500"
+						/>
+					</div>
+					{preview && (
+						<Image
+							src={preview}
+							alt="Vista previa"
+							width={64}
+							height={64}
+							className="rounded-lg object-cover border border-slate-600/50"
+						/>
+					)}
+				</div>
 			</div>
 
 			{/* Step 2 – Datos de empresa */}
@@ -121,6 +163,33 @@ function EmployeeForm() {
 					label="Salario"
 					required={currentStep === 2}
 				/>
+				<div className="flex flex-col gap-1.5">
+					<label
+						htmlFor="role"
+						className="text-sm font-medium text-slate-300 tracking-wide"
+					>
+						Rol
+						{currentStep === 2 && (
+							<span className="text-blue-400 ml-0.5">*</span>
+						)}
+					</label>
+					<select
+						id="role"
+						name="role"
+						required={currentStep === 2}
+						defaultValue=""
+						className="w-full px-3 py-2.5 rounded-lg bg-slate-800/60 border border-slate-600/50 text-white/90 outline-none transition-all duration-200 focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500/60 hover:border-slate-500"
+					>
+						<option value="" disabled>
+							Selecciona un rol
+						</option>
+						{ROLES.map((r) => (
+							<option key={r.value} value={r.value}>
+								{r.label}
+							</option>
+						))}
+					</select>
+				</div>
 			</div>
 
 			{/* Navegación */}

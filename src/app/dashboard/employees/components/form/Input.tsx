@@ -9,7 +9,7 @@ interface InputProps {
 	required?: boolean;
 }
 const baseStyle =
-	"w-full px-3 py-2.5 rounded-lg bg-slate-800/60 border border-slate-600/50 text-white/90 placeholder:text-slate-500 outline-none transition-all duration-200 focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500/60 hover:border-slate-500";
+	"w-full px-3 py-1 rounded-lg bg-slate-800/60 border border-slate-600/50 text-white/90 placeholder:text-slate-500 outline-none transition-all duration-200 focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500/60 hover:border-slate-500";
 
 const Input = ({ name, type = "text", label, ClassName, accept, required = true }: InputProps) => {
 	return (

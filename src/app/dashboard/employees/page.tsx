@@ -11,7 +11,7 @@ import EmployeeHeader from "./components/EmployeeHeader";
 const page = () => {
 
 
-	const tableMenu = ["Empleado", "Fecha", "Razon"  ,"Estatus", "Editar"];
+	const tableMenu = ["Empleado", "Fecha de ingreso", "Horario"  ,"Estatus", "Editar"];
 	return (
 		<>
       <EmployeeHeader/>

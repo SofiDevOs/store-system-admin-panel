@@ -11,9 +11,11 @@ export const ThemeToggle = () => {
     setIsMounted(true);
   }, []);
   if (!isMounted) {
-    <div className="p-2">
-      <div className="w-5 h-5"></div>
-    </div>;
+    return (
+      <div className="p-2">
+        <div className="w-5 h-5"></div>
+      </div>
+    );
   }
   return (
     <div>
