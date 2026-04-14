@@ -12,7 +12,7 @@ const SalesPerDay = () => {
 					time={1000}
 				/>
 			</div>
-			<Link href="/sales" className="flex items-center justify-center py-1 px-2 bg-slate-600 rounded-lg text-white hover:bg-stone-800">
+			<Link href="/dashboard/sales" className="flex items-center justify-center py-1 px-2 bg-slate-600 rounded-lg text-white hover:bg-stone-800">
 				Detalle
 			</Link>
 		</div>
