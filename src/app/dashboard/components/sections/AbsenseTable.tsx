@@ -1,7 +1,8 @@
-import { AbsenceEmployee } from "@/types/absenceEmployee.type";
+import { Employee } from "@/types/raw/employee.raw.type";
+import { AbsenceEmployee} from "@/types/absenceEmployee.type";
 
 interface Props {
-	absenceData: AbsenceEmployee[];
+	absenceData: Employee[] | AbsenceEmployee[];
 	tableMenu: string[];
 	children?: React.ReactNode;
 }

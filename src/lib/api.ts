@@ -5,7 +5,7 @@ if (!API_URL) throw new Error("Missing NEXT_PUBLIC_API_URL");
 let csrfToken: string | null = null;
 
 /**
- * Retrieves the CSRF token required for non-GET requests.
+ * Retrieves the CSRF token required for all API requests.
  *
  * Fetches the token from the server on the first call and caches it in memory.
  * Subsequent calls return the cached value without making a network request.
@@ -40,7 +40,7 @@ interface ApiOptions { method?: HttpMethod; body?: unknown; headers?: Record<str
  *
  * Handles common concerns automatically:
  * - Attaches `credentials: "include"` for cookie-based auth.
- * - Adds the `x-csrf-token` header for every non-GET request.
+ * - Adds the `x-csrf-token` header for every request, including GET.
  * - Sets `Content-Type: application/json` unless the body is `FormData`.
  * - Returns `null` for empty responses (HTTP 204 or `Content-Length: 0`).
  * - Parses and throws server error messages from the response body.
@@ -69,7 +69,7 @@ export const apiFetch = async <T>(endpoint: string, { method, body, headers }: A
         headers: {
             Accept: "application/json",
             ...(!isForm && { "Content-Type": "application/json" }),
-            ...(method !== "GET" && { "x-csrf-token": await getCsrfToken() }),
+            "x-csrf-token": await getCsrfToken(),
             ...headers,
         },
         ...(body !== undefined && { body: isForm ? body : JSON.stringify(body) }),

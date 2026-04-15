@@ -25,8 +25,9 @@ const UserMenu = () => {
 	}, []);
 
 	const logout = () => {
-		apiFetch("/auth/logout", { method: "POST" }).then(() => {
+		apiFetch("/auth/logout", { method: "POST"}).then(() => {
 			window.location.href = "/login";
+
 		});
 	};
 

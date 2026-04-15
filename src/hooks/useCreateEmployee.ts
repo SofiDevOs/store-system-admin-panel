@@ -9,7 +9,7 @@ export const useCreateEmployee = () => {
 	const register = async (formData: FormData) => {
 		setIsLoading(true);
 		setError(null);
-		const fields = ["name", "lastname", "nss", "rfc", "address", "salary", "email", "birthdate", "profileImage"] as const;
+		const fields = ["name", "lastname", "nss", "rfc", "address", "salary", "email", "birthdate", "profileImage", "phone", "department", "role"] as const;
 		const data = Object.fromEntries(
 			fields.map((field) => [
 				field,
