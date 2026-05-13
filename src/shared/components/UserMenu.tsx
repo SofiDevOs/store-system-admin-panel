@@ -66,7 +66,7 @@ const UserMenu = () => {
 				<div className="flex flex-col justify-center items-center mt-3">
 					<ul className="flex flex-col gap-3 w-full ">
 						<li className="w-full">
-							<button onClick={logout} className="z-9000 p-2 rounded bg-slate-700 hover:bg-slate-600 cursor-pointer  flex gap-2 items-center text-white w-full">logout <SquareArrowRightExit  className="w-5"/></button>
+							<button onClick={logout} className="z-9000 p-2 rounded bg-slate-200 hover:bg-slate-300 cursor-pointer  flex gap-2 items-center text-slate-700 w-full dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-white">logout <SquareArrowRightExit  className="w-5"/></button>
 						</li>
 					</ul>
 				</div>

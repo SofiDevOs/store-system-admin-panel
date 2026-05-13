@@ -31,8 +31,8 @@ function StepIndicator({ currentStep }: StepIndicatorProps) {
 									isCompleted
 										? "bg-green-500 border-green-500 text-white"
 										: isActive
-											? "border-blue-500 bg-blue-500/20 text-blue-400"
-											: "border-slate-500 text-slate-500"
+											? "border-blue-500 bg-blue-500/20 text-blue-600 dark:text-blue-400"
+											: "border-slate-300 text-slate-400 dark:border-slate-500 dark:text-slate-500"
 								}`}
 							>
 								{isCompleted ? <Check size={16} /> : step.icon}
@@ -40,10 +40,10 @@ function StepIndicator({ currentStep }: StepIndicatorProps) {
 							<span
 								className={`text-sm font-medium transition-colors ${
 									isActive
-										? "text-blue-400"
+										? "text-blue-600 dark:text-blue-400"
 										: isCompleted
-											? "text-green-400"
-											: "text-slate-500"
+											? "text-green-600 dark:text-green-400"
+											: "text-slate-400 dark:text-slate-500"
 								}`}
 							>
 								{step.label}
@@ -52,7 +52,7 @@ function StepIndicator({ currentStep }: StepIndicatorProps) {
 						{index < STEPS.length - 1 && (
 							<div
 								className={`w-12 h-0.5 mx-1 transition-colors ${
-									isCompleted ? "bg-green-500" : "bg-slate-600"
+									isCompleted ? "bg-green-500" : "bg-slate-300 dark:bg-slate-600"
 								}`}
 							/>
 						)}

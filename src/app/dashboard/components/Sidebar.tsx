@@ -13,7 +13,7 @@ const Sidebar = ({
 }) => {
   return (
     <aside
-      className={`sidebar h-screen sticky top-0 border-r  border-emerald-400/20  rounded-r-2xl shadow-emerald-200 text-white py-4  px-2 [grid-area:sidebar] flex flex-col items-center gap-2 overflow-hidden ${isActive ? "active px-5" : ""}`}
+      className={`sidebar h-screen sticky top-0 border-r  border-emerald-400/20  rounded-r-2xl shadow-emerald-200 text-slate-700 dark:text-white py-4  px-2 [grid-area:sidebar] flex flex-col items-center gap-2 overflow-hidden ${isActive ? "active px-5" : ""}`}
     >
       <PanelRightOpen
         onClick={openPanel}

@@ -7,16 +7,16 @@ interface Props {
 	children?: React.ReactNode;
 }
 
-const AbsenseTable = ({  tableMenu,   children }: Props) => {
+const DataTable = ({  tableMenu,   children }: Props) => {
 	return (
-		<div className="bg-slate-700 dark:bg-slate-900 border border-slate-500/30  rounded-xl p-4 w-full  ">
+		<div className="bg-white dark:bg-slate-900 border border-slate-400/30 dark:border-slate-500/30  rounded-xl p-4 w-full  ">
 			<table className="table-auto md:table-fixed border-collapse w-full min-h-fit ">
-				<thead className="border-b border-slate-500/30">
+				<thead className="border-b border-slate-300 dark:border-slate-500/30">
 					<tr className="py-4">
 						{tableMenu.map((col) => (
 							<th
 								align="left"
-								className="py-4 text-slate-200"
+								className="py-4 text-slate-700 dark:text-slate-200"
 								key={col}
 							>
 								{col}
@@ -30,4 +30,4 @@ const AbsenseTable = ({  tableMenu,   children }: Props) => {
 	);
 };
 
-export default AbsenseTable;
+export default DataTable;

@@ -1,6 +1,6 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_URL =
+	process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api/v1";
 if (!API_URL) throw new Error("Missing NEXT_PUBLIC_API_URL");
-
 
 let csrfToken: string | null = null;
 
@@ -14,11 +14,14 @@ let csrfToken: string | null = null;
  * @throws {Error} If the token endpoint returns a non-OK response.
  */
 export const getCsrfToken = async (): Promise<string> => {
-    if (csrfToken) return csrfToken;
-    const res = await fetch(`${API_URL}/security/csrf-token`, { credentials: "include", cache: "no-store" });
-    if (!res.ok) throw new Error("Secure connection failed");
-    csrfToken = (await res.json()).csrfToken;
-    return csrfToken as string;
+	if (csrfToken) return csrfToken;
+	const res = await fetch(`${API_URL}/security/csrf-token`, {
+		credentials: "include",
+		cache: "no-store",
+	});
+	if (!res.ok) throw new Error("Secure connection failed");
+	csrfToken = (await res.json()).csrfToken;
+	return csrfToken as string;
 };
 
 /** Supported HTTP methods for {@link apiFetch}. */
@@ -33,7 +36,11 @@ type HttpMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
  *   `multipart/form-data` boundary automatically.
  * @property headers - Additional headers to merge into the request.
  */
-interface ApiOptions { method?: HttpMethod; body?: unknown; headers?: Record<string, string> }
+interface ApiOptions {
+	method?: HttpMethod;
+	body?: unknown;
+	headers?: Record<string, string>;
+}
 
 /**
  * Authenticated fetch wrapper for all API calls.
@@ -61,24 +68,34 @@ interface ApiOptions { method?: HttpMethod; body?: unknown; headers?: Record<str
  * form.append("avatar", file);
  * await apiFetch("/employees/avatar", { method: "POST", body: form });
  */
-export const apiFetch = async <T>(endpoint: string, { method, body, headers }: ApiOptions = {}): Promise<T> => {
-    const isForm = body instanceof FormData;
+export const apiFetch = async <T>(
+	endpoint: string,
+	{ method, body, headers }: ApiOptions = {},
+): Promise<T> => {
+	const isForm = body instanceof FormData;
 
-    const res = await fetch(`${API_URL}${endpoint}`, {
-        method, credentials: "include",
-        headers: {
-            Accept: "application/json",
-            ...(!isForm && { "Content-Type": "application/json" }),
-            "x-csrf-token": await getCsrfToken(),
-            ...headers,
-        },
-        ...(body !== undefined && { body: isForm ? body : JSON.stringify(body) }),
-    });
+	const res = await fetch(`${API_URL}${endpoint}`, {
+		method,
+		credentials: "include",
+		headers: {
+			Accept: "application/json",
+			...(!isForm && { "Content-Type": "application/json" }),
+			"x-csrf-token": await getCsrfToken(),
+			...headers,
+		},
+		...(body !== undefined && {
+			body: isForm ? body : JSON.stringify(body),
+		}),
+	});
 
-    if (!res.ok) {
-        const err = await res.json().catch(() => null);
-        throw new Error(err?.errors?.[0]?.msg || err?.message || "Request failed");
-    }
+	if (!res.ok) {
+		const err = await res.json().catch(() => null);
+		throw new Error(
+			err?.errors?.[0]?.msg || err?.message || "Request failed",
+		);
+	}
 
-    return (res.status === 204 || res.headers.get("Content-Length") === "0") ? null as T : res.json();
+	return res.status === 204 || res.headers.get("Content-Length") === "0"
+		? (null as T)
+		: res.json();
 };

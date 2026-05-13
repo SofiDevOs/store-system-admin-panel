@@ -2,7 +2,7 @@ import React from "react";
 import { BasicStats } from "./components/sections/BasicStats";
 import absenceData from "./dummyData/employee.json";
 
-import AbsenseTable from "./components/sections/AbsenseTable";
+import DataTable from "@/shared/components/DataTable";
 // import employee from "./dummyData/employee.json";
 import type { AbsenceEmployee } from "@/types/absenceEmployee.type";
 import { Status } from "@/types/status.type";
@@ -23,7 +23,7 @@ const page = () => {
   return (
     <>
       <BasicStats />
-      <AbsenseTable
+      <DataTable
 				absenceData={absenceData as AbsenceEmployee[]}
 
 				tableMenu={tableMenu}
@@ -31,7 +31,7 @@ const page = () => {
 				{absenceData.map((row) => (
 					<tr
 						key={row.id}
-						className=" border-b border-slate-500/30 dark:border-slate-500/30 hover:bg-slate-500/20 dark:hover:bg-slate-800  py-10 [&>td]:text-slate-300 dark:[&>td]:text-slate-200 [&>td]:min-h-16"
+						className=" border-b border-slate-300 dark:border-slate-500/30 hover:bg-slate-100 dark:hover:bg-slate-800  py-10 [&>td]:text-slate-700 dark:[&>td]:text-slate-200 [&>td]:min-h-16"
 					>
 						{row.profilePicture && row.name && (
 							<td className="p-2 flex items-center gap-3  ">
@@ -60,7 +60,7 @@ const page = () => {
 						</td>
 					</tr>
 				))}
-			</AbsenseTable>
+			</DataTable>
 
     </>
   );

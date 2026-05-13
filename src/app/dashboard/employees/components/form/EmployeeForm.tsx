@@ -42,7 +42,7 @@ function EmployeeForm() {
 	return (
 		<Form
 			action={register}
-			className="flex flex-col self-center px-6 py-3 rounded-xl  w-full  border-box *:text-white/80 gap-2"
+			className="flex flex-col self-center px-6 py-3 rounded-xl  w-full  border-box gap-2"
 		>
 			<StepIndicator currentStep={currentStep} steps={STEPS} />
 
@@ -50,7 +50,6 @@ function EmployeeForm() {
 			<div
 				className={currentStep === 1 ? "flex flex-col gap-3" : "hidden"}
 			>
-
 				<div className="grid grid-cols-2 gap-4">
 					<Input
 						name="name"
@@ -97,11 +96,13 @@ function EmployeeForm() {
 				<div className="flex flex-col gap-1.5">
 					<label
 						htmlFor="birthdate"
-						className="text-sm font-medium text-slate-300 tracking-wide"
+						className="text-sm font-medium text-slate-700 dark:text-slate-300 tracking-wide"
 					>
 						Fecha de nacimiento
 						{currentStep === 1 && (
-							<span className="text-blue-400 ml-0.5">*</span>
+							<span className="text-blue-500 dark:text-blue-400 ml-0.5">
+								*
+							</span>
 						)}
 					</label>
 					<input
@@ -109,14 +110,14 @@ function EmployeeForm() {
 						name="birthdate"
 						id="birthdate"
 						required={currentStep === 1}
-						className="w-full px-3 py-2.5 rounded-lg bg-slate-800/60 border border-slate-600/50 text-white/90 outline-none transition-all duration-200 focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500/60 hover:border-slate-500"
+						className="w-full px-3 py-2.5 rounded-lg bg-slate-100 border border-slate-300 text-slate-900 outline-none transition-all duration-200 focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500/60 hover:border-slate-400 dark:bg-slate-800/60 dark:border-slate-600/50 dark:text-white/90 dark:hover:border-slate-500"
 					/>
 				</div>
 				<div className="flex items-end gap-4">
 					<div className="flex flex-col gap-1.5">
 						<label
 							htmlFor="profileImage"
-							className="text-sm font-medium text-slate-300 tracking-wide"
+							className="text-sm font-medium text-slate-700 dark:text-slate-300 tracking-wide"
 						>
 							Foto de perfil
 						</label>
@@ -126,7 +127,7 @@ function EmployeeForm() {
 							name="profileImage"
 							accept="image/*"
 							onChange={handleImageChange}
-							className="w-fit px-3 py-1 rounded-lg bg-slate-800/60 border border-slate-600/50 text-white/90 outline-none transition-all duration-200 focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500/60 hover:border-slate-500 file:mr-3 file:px-3 file:py-1.5 file:rounded-md file:border-0 file:bg-slate-600 file:text-sm file:font-medium file:text-slate-300 file:cursor-pointer hover:file:bg-slate-500"
+							className="w-fit px-3 py-1 rounded-lg bg-slate-100 border border-slate-300 text-slate-900 outline-none transition-all duration-200 focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500/60 hover:border-slate-400 dark:bg-slate-800/60 dark:border-slate-600/50 dark:text-white/90 dark:hover:border-slate-500 file:mr-3 file:px-3 file:py-1.5 file:rounded-md file:border-0 file:bg-slate-200 file:text-sm file:font-medium file:text-slate-700 file:cursor-pointer hover:file:bg-slate-300 dark:file:bg-slate-600 dark:file:text-slate-300 dark:hover:file:bg-slate-500"
 						/>
 					</div>
 					{preview && (
@@ -145,7 +146,7 @@ function EmployeeForm() {
 			<div
 				className={currentStep === 2 ? "flex flex-col gap-4" : "hidden"}
 			>
-				<h3 className="text-lg font-semibold text-white/90">
+				<h3 className="text-lg font-semibold text-slate-900 dark:text-white/90">
 					Datos de empresa
 				</h3>
 				<Input
@@ -166,11 +167,13 @@ function EmployeeForm() {
 				<div className="flex flex-col gap-1.5">
 					<label
 						htmlFor="role"
-						className="text-sm font-medium text-slate-300 tracking-wide"
+						className="text-sm font-medium text-slate-700 dark:text-slate-300 tracking-wide"
 					>
 						Rol
 						{currentStep === 2 && (
-							<span className="text-blue-400 ml-0.5">*</span>
+							<span className="text-blue-500 dark:text-blue-400 ml-0.5">
+								*
+							</span>
 						)}
 					</label>
 					<select
@@ -178,7 +181,7 @@ function EmployeeForm() {
 						name="role"
 						required={currentStep === 2}
 						defaultValue=""
-						className="w-full px-3 py-2.5 rounded-lg bg-slate-800/60 border border-slate-600/50 text-white/90 outline-none transition-all duration-200 focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500/60 hover:border-slate-500"
+						className="w-full px-3 py-2.5 rounded-lg bg-slate-100 border border-slate-300 text-slate-900 outline-none transition-all duration-200 focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500/60 hover:border-slate-400 dark:bg-slate-800/60 dark:border-slate-600/50 dark:text-white/90 dark:hover:border-slate-500"
 					>
 						<option value="" disabled>
 							Selecciona un rol
@@ -198,7 +201,7 @@ function EmployeeForm() {
 					<button
 						type="button"
 						onClick={goBack}
-						className="flex items-center gap-1 px-4 py-2 rounded bg-slate-600 hover:bg-slate-500 text-white/80 font-medium transition-colors"
+						className="flex items-center gap-1 px-4 py-2 rounded bg-slate-200 hover:bg-slate-300 text-slate-700 dark:bg-slate-600 dark:hover:bg-slate-500 dark:text-white/80 font-medium transition-colors"
 					>
 						<ChevronLeft size={18} />
 						Anterior
@@ -211,7 +214,7 @@ function EmployeeForm() {
 					<button
 						type="button"
 						onClick={goNext}
-						className="flex items-center gap-1 px-4 py-2 rounded bg-blue-600 hover:bg-blue-700 text-white font-medium transition-colors"
+						className="flex items-center gap-1 px-4 py-2 rounded bg-emerald-600 hover:bg-emerald-700 text-white font-medium transition-colors"
 					>
 						Siguiente
 						<ChevronRight size={18} />
@@ -220,7 +223,7 @@ function EmployeeForm() {
 					<button
 						type="submit"
 						disabled={isLoading}
-						className="px-4 py-2 rounded bg-green-600 hover:bg-green-700 text-white font-bold transition-colors disabled:opacity-50"
+						className="px-4 py-2 rounded bg-emerald-600 hover:bg-emerald-700 text-white font-bold transition-colors disabled:opacity-50"
 					>
 						{isLoading ? "Registrando..." : "Registrar Empleado"}
 					</button>
