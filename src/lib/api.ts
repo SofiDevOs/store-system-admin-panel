@@ -73,7 +73,6 @@ export const apiFetch = async <T>(
 	{ method, body, headers }: ApiOptions = {},
 ): Promise<T> => {
 	const isForm = body instanceof FormData;
-
 	const res = await fetch(`${API_URL}${endpoint}`, {
 		method,
 		credentials: "include",
