@@ -15,7 +15,7 @@ function Page() {
 	useEffect(() => {
 		const fetchEmployees = async () => {
 			try {
-				const data = await apiFetch<Employee[]>("/employee", {
+				const data = await apiFetch<Employee[]>("/employees", {
 					method: "GET",
 				});
 				setData(data);
