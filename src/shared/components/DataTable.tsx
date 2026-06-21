@@ -1,5 +1,5 @@
 import { Employee } from "@/types/raw/employee.raw.type";
-import { AbsenceEmployee} from "@/types/absenceEmployee.type";
+import { AbsenceEmployee } from "@/types/absenceEmployee.type";
 
 interface Props {
 	absenceData: Employee[] | AbsenceEmployee[];
@@ -7,7 +7,7 @@ interface Props {
 	children?: React.ReactNode;
 }
 
-const DataTable = ({  tableMenu,   children }: Props) => {
+const DataTable = ({ tableMenu, children }: Props) => {
 	return (
 		<div className="bg-white dark:bg-slate-900 border border-slate-400/30 dark:border-slate-500/30  rounded-xl p-4 w-full  ">
 			<table className="table-auto md:table-fixed border-collapse w-full min-h-fit ">

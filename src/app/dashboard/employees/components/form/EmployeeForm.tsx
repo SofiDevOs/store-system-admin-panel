@@ -214,7 +214,7 @@ function EmployeeForm() {
 					<button
 						type="button"
 						onClick={goNext}
-						className="flex items-center gap-1 px-4 py-2 rounded bg-emerald-600 hover:bg-emerald-700 text-white font-medium transition-colors"
+						className="flex items-center gap-1 px-4 py-2 rounded bg-violet-600 hover:bg-violet-700 text-white font-medium transition-colors"
 					>
 						Siguiente
 						<ChevronRight size={18} />
@@ -223,7 +223,7 @@ function EmployeeForm() {
 					<button
 						type="submit"
 						disabled={isLoading}
-						className="px-4 py-2 rounded bg-emerald-600 hover:bg-emerald-700 text-white font-bold transition-colors disabled:opacity-50"
+						className="px-4 py-2 rounded bg-violet-600 hover:bg-violet-700 text-white font-bold transition-colors disabled:opacity-50"
 					>
 						{isLoading ? "Registrando..." : "Registrar Empleado"}
 					</button>

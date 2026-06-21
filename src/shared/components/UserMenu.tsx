@@ -6,6 +6,7 @@ import {  Cross2Icon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import { SquareArrowRightExit } from "lucide-react";
 import { apiFetch } from "@/lib/api";
+import { useLogout } from "@/hooks/useLogout";
 
 interface UserProfile {
 	name: string;
@@ -17,19 +18,13 @@ interface UserProfile {
 
 const UserMenu = () => {
 	const [user, setUser] = useState<UserProfile | null>(null);
+	const { logout, isLoading: isLoggingOut } = useLogout();
 
 	useEffect(() => {
 		apiFetch<UserProfile>("/profile")
 			.then(setUser)
 			.catch(() => setUser(null));
 	}, []);
-
-	const logout = () => {
-		apiFetch("/auth/logout", { method: "POST"}).then(() => {
-			window.location.href = "/login";
-
-		});
-	};
 
 	const avatarSrc = user?.profileImage || "/gata-salvaje.jpeg";
 
@@ -66,7 +61,10 @@ const UserMenu = () => {
 				<div className="flex flex-col justify-center items-center mt-3">
 					<ul className="flex flex-col gap-3 w-full ">
 						<li className="w-full">
-							<button onClick={logout} className="z-9000 p-2 rounded bg-slate-200 hover:bg-slate-300 cursor-pointer  flex gap-2 items-center text-slate-700 w-full dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-white">logout <SquareArrowRightExit  className="w-5"/></button>
+							<button onClick={logout} disabled={isLoggingOut} className="z-9000 p-2 rounded bg-slate-200 hover:bg-slate-300 cursor-pointer flex gap-2 items-center text-slate-700 w-full dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-white disabled:opacity-50 disabled:cursor-not-allowed">
+								{isLoggingOut ? "Cerrando sesión..." : "Logout"}
+								<SquareArrowRightExit className="w-5"/>
+							</button>
 						</li>
 					</ul>
 				</div>
