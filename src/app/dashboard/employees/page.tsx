@@ -1,15 +1,11 @@
-// src/app/dashboard/employees/page.tsx
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import { Status } from "@/types/status.type";
-// Eliminamos apiFetch, useState y useEffect de aquí
 import { useGetEmployee } from "@/hooks/useGetEmployee";
-
 import DataTable from "@/shared/components/DataTable";
 import TagStatus from "../components/TagStatus";
 import EmployeeHeader from "./components/EmployeeHeader";
+import EmployeeCell from "@/shared/components/EmployeeCell";
 
 function Page() {
 	// 1. Invocamos nuestro custom hook limpio
@@ -55,17 +51,12 @@ function Page() {
 							key={row.id}
 							className="border-b border-slate-300 dark:border-slate-500/30 hover:bg-slate-100 dark:hover:bg-slate-800 py-10 [&>td]:text-slate-700 dark:[&>td]:text-slate-200 [&>td]:min-h-16"
 						>
-							<td className="p-2 flex items-center gap-3">
-								<Image
-									className="rounded-full border-2 border-white/60 object-cover"
-									width={30}
-									height={30}
-									src={
-										row.profileImage || "/gata-salvaje.jpeg"
-									}
-									alt={row.name || "Empleado"}
+							<td className="p-2">
+								<EmployeeCell
+									name={row.name}
+									lastname={row.lastname}
+									profileImage={row.profileImage}
 								/>
-								{row.name}
 							</td>
 							<td>{row.createdAt}</td>
 							<td>{row.department}</td>

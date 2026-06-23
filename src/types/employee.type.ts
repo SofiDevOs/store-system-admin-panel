@@ -1,7 +1,1 @@
-export interface Employee {
-  id: string;
-  name: string;
-  lastName: string;
-  address: string;
-  profilePicture?: string;
-}
+export type { Employee, User } from "./raw/employee.raw.type";

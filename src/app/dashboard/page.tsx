@@ -1,13 +1,11 @@
 import React from "react";
 import { BasicStats } from "./components/sections/BasicStats";
 import absenceData from "./dummyData/employee.json";
-
 import DataTable from "@/shared/components/DataTable";
 import type { AbsenceEmployee } from "@/types/absenceEmployee.type";
 import { Status } from "@/types/status.type";
-
-import Image from "next/image";
 import TagStatus from "./components/TagStatus";
+import EmployeeCell from "@/shared/components/EmployeeCell";
 
 const page = () => {
 	const columns: { field: keyof AbsenceEmployee }[] = [
@@ -27,18 +25,12 @@ const page = () => {
 						key={row.id}
 						className=" border-b border-slate-300 dark:border-violet-500/30 hover:bg-violet-100 dark:hover:bg-violet-600/30  py-10 [&>td]:text-slate-700 dark:[&>td]:text-slate-200 [&>td]:min-h-16"
 					>
-						{row.profilePicture && row.name && (
-							<td className="p-2 flex items-center gap-3  ">
-								<Image
-									className="rounded-full border-2 border-violet-500 "
-									width={30}
-									height={30}
-									src={row.profilePicture}
-									alt={row.name}
-								/>{" "}
-								{row.name}
-							</td>
-						)}
+						<td className="p-2">
+							<EmployeeCell
+								name={row.name}
+								profileImage={row.profileImage}
+							/>
+						</td>
 						{columns.map((col) => (
 							<td key={col.field}>{row[col.field]}</td>
 						))}

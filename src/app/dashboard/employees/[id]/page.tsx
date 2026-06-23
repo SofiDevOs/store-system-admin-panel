@@ -21,11 +21,16 @@ const Page = () => {
 
 	const handleChange =
 		(field: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
-			setForm((prev) => (prev ? { ...prev, [field]: e.target.value } : prev));
+			setForm((prev) =>
+				prev ? { ...prev, [field]: e.target.value } : prev,
+			);
 		};
 
 	return (
 		<>
+			<span className="text-2xl font-bold">
+				Detalles del empleado #{params.id as string}
+			</span>
 			<form className="flex flex-col">
 				<div className="flex gap-4 items-center">
 					<Input
@@ -81,4 +86,3 @@ const Page = () => {
 };
 
 export default Page;
-

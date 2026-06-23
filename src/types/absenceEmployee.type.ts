@@ -2,9 +2,9 @@ import type { Employee } from "./employee.type";
 
 export type AbsenceEmployee = Pick<
   Employee,
-  "name" | "id" | "profilePicture"
+  "name" | "id" | "profileImage"
 > & {
   date: string;
   reason: string;
-  status: "PENDING" | "APROVED" | "REJECT";
+  status: "PENDING" | "APPROVED" | "REJECTED";
 };
