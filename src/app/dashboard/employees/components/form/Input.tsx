@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 	label?: string;
 	placeholder?: string;
@@ -21,7 +21,6 @@ const Input = ({
 	handleChange,
 	readOnly = false,
 }: InputProps) => {
-	const [isEdit, setIsEdit] = useState(readOnly);
 	return (
 		<div className="flex flex-col gap-1.5">
 			{label && (
@@ -39,8 +38,7 @@ const Input = ({
 			)}
 			<input
 				type={type}
-				onClick={() => setIsEdit(false)}
-				readOnly={isEdit}
+				readOnly={readOnly}
 				id={name}
 				{...(type === "file" && accept ? { accept } : {})}
 				name={name}
@@ -60,3 +58,4 @@ const Input = ({
 };
 
 export default Input;
+
