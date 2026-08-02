@@ -1,8 +1,17 @@
 import React from "react";
 
-const FormDetail = ({ children }: { children: React.ReactNode }) => {
-	return <form className="flex flex-col gap-4">{children}</form>;
+const FormDetail = ({
+	children,
+	onSubmit,
+}: {
+	children: React.ReactNode;
+	onSubmit?: React.FormEventHandler<HTMLFormElement>;
+}) => {
+	return (
+		<form className="flex flex-col gap-4" onSubmit={onSubmit}>
+			{children}
+		</form>
+	);
 };
 
 export default FormDetail;
-

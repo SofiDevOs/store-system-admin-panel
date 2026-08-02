@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { apiFetch } from "@/lib/api";
 import type { Employee } from "@/types/employee.type";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 
 const useUpdateEmployee = () => {
-    const [loading, setLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<Error | null>(null);
     const router = useRouter();
-    const UpdateEmployee = async (id: string, updatedFields: Partial<Employee>) => {
-        setLoading(true);
+    const updateEmployee = async (id: string, updatedFields: Partial<Employee>) => {
+        setIsLoading(true);
         setError(null);
         try {
             const payload = {
@@ -27,18 +27,18 @@ const useUpdateEmployee = () => {
                 method: "PUT",
                 body: payload,
             })
-            router.reload();
+            router.refresh();
             router.push(`/dashboard/employees/${id}`);
         } catch (error) {
             setError(error as Error);
         } finally {
-            setLoading(false);
+            setIsLoading(false);
         }
     }
     return {
-        loading,
+        isLoading,
         error,
-        UpdateEmployee,
+        updateEmployee,
     };
 };
 
